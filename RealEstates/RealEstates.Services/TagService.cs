@@ -27,6 +27,8 @@ namespace RealEstates.Services
                     Name = name,
                     Importance = (int)importance
                 };
+                context.Tags.Add(tag);
+                context.SaveChanges();
             }
         }
 
