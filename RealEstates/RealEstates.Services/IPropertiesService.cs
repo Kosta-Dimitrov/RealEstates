@@ -8,5 +8,8 @@ namespace RealEstates.Services
         void Add(string district, int floor, int maxFloor, int size,
             int yardSize, int year, string propertyType, string buildingType, int price);
         IEnumerable<PropertyInfo> Search(int minPrice, int maxPrice, int minSize, int maxSize);
+
+        decimal AveragePricePerSquareMeter();
+        decimal AveragePricePerSquareMeter(string districtName);
     }
 }
