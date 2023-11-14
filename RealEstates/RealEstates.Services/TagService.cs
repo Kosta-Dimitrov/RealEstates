@@ -20,11 +20,14 @@ namespace RealEstates.Services
 
         public void Add(string name, int? importance = null)
         {
-            var tag = new Tag()
+            if (context.Tags.FirstOrDefault(x => x.Name == name) == null)
             {
-                Name = name,
-                Importance = (int)importance
-            };
+                var tag = new Tag()
+                {
+                    Name = name,
+                    Importance = (int)importance
+                };
+            }
         }
 
         public void BulkTagProperties()
