@@ -18,7 +18,7 @@ namespace RealEstates.Models
         /// <summary>
         /// The price is in EUR
         /// </summary>
-        public int Price { get; set; }
+        public int? Price { get; set; }
 
         public int DistrictId { get; set; }
         public District District { get; set; }
