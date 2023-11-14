@@ -12,7 +12,7 @@ namespace RealEstates.Models
 
         public string Name { get; set; }
 
-        public int Importance { get; set; }
+        public int? Importance { get; set; }
 
         public ICollection<Property> Properties { get; set; }
     }
