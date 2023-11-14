@@ -5,6 +5,7 @@ namespace RealEstates.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        //Importer is not class library
         public ApplicationDbContext(){}
 
         public ApplicationDbContext(DbContextOptions options)
@@ -20,7 +21,7 @@ namespace RealEstates.Data
         {
             if(!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=RealEstates;IntegratedSecuruty=true");
+                optionsBuilder.UseSqlServer("Server=.;Database=RealEstates;Integrated Security=true;Trusted_Connection=true;");//integrated security
             }
         }
 
