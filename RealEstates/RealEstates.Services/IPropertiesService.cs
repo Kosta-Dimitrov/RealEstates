@@ -11,5 +11,6 @@ namespace RealEstates.Services
 
         decimal AveragePricePerSquareMeter();
         decimal AveragePricePerSquareMeter(string districtName);
+        IEnumerable<PropertyInfoFullData> GetFullData(int count);
     }
 }

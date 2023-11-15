@@ -70,5 +70,13 @@ namespace RealEstates.Services
             => context.Properties
                 .Where(x => x.Price.HasValue && x.District.Name == districtName)
                 .Average(x => x.Price / (decimal)x.Size) ?? 0;
+
+        public IEnumerable<PropertyInfoFullData> GetFullData(int count)
+            => context.Properties
+                .ProjectTo<PropertyInfoFullData>(this.Mapper.ConfigurationProvider)
+                .OrderByDescending(x => x.Price)
+                .ThenBy(x => x.Size)
+                .Take(count)
+                .ToList();
     }
 }
