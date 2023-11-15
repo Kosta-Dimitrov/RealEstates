@@ -1,4 +1,5 @@
-﻿using RealEstates.Data;
+﻿using AutoMapper.QueryableExtensions;
+using RealEstates.Data;
 using RealEstates.Services.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,7 @@ namespace RealEstates.Services
         public IEnumerable<DistrictInfo> GetAllDistricts()
             => this.context
                     .Districts
-                    .Select(x => new DistrictInfo()
-                    {
-                        Name = x.Name,
-                        PropertiesCount = x.Properties.Count,
-                        AveragePricePerSquareMeter =
-                                x.Properties
-                                    .Where(p => p.Price.HasValue)
-                                    .Average(p => p.Price / (decimal)p.Size) ?? 0
-                    });
+                    .ProjectTo<DistrictInfo>(this.Mapper.ConfigurationProvider);
 
         public IEnumerable<DistrictInfo> GetMostExpensiveDistricts(int count)
             => GetAllDistricts()

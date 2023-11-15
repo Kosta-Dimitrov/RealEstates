@@ -1,4 +1,5 @@
-﻿using RealEstates.Data;
+﻿using AutoMapper.QueryableExtensions;
+using RealEstates.Data;
 using RealEstates.Models;
 using RealEstates.Services.Models;
 using System.Collections.Generic;
@@ -57,14 +58,7 @@ namespace RealEstates.Services
         public IEnumerable<PropertyInfo> Search(int minPrice, int maxPrice, int minSize, int maxSize)
             => context.Properties
                 .Where(x => x.Price >= minPrice && x.Price <= maxPrice && x.Size >= minSize && x.Size <= maxSize)
-                .Select(x => new PropertyInfo()
-                {
-                    Size = x.Size,
-                    Price = x.Price ?? 0,
-                    BuildingType = x.BuildingType.Name,
-                    DistrictName = x.District.Name,
-                    PropertyType = x.Type.Name
-                })
+                .ProjectTo<PropertyInfo>(this.Mapper.ConfigurationProvider)
                 .ToList();
 
         public decimal AveragePricePerSquareMeter()
