@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace RealEstates.Services
 {
-    public class TagService : ITagService
+    public class TagService : BaseService, ITagService
     {
         private readonly ApplicationDbContext context;
         private readonly IPropertiesService propertiesService;

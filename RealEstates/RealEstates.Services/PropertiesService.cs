@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace RealEstates.Services
 {
-    public class PropertiesService : IPropertiesService
+    public class PropertiesService : BaseService, IPropertiesService
     {
         public ApplicationDbContext context { get; set; }
         public PropertiesService(ApplicationDbContext context)

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace RealEstates.Services
 {
-    public class DistrictService : IDistrictsService
+    public class DistrictService : BaseService, IDistrictsService
     {
         private readonly ApplicationDbContext context;
         public DistrictService(ApplicationDbContext context)
