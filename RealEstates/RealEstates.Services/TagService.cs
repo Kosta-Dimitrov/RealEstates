@@ -9,12 +9,10 @@ namespace RealEstates.Services
     public class TagService : BaseService, ITagService
     {
         private readonly ApplicationDbContext context;
-        private readonly IPropertiesService propertiesService;
         private readonly IDistrictsService districtsService;
-        public TagService(ApplicationDbContext context, IPropertiesService propertiesService, IDistrictsService districtsService)
+        public TagService(ApplicationDbContext context, IDistrictsService districtsService)
         {
             this.context = context;
-            this.propertiesService = propertiesService;
             this.districtsService = districtsService;
         }
 
